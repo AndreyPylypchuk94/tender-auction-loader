@@ -38,6 +38,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <finalName>auction-loader</finalName>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>

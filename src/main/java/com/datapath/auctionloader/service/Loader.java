@@ -8,7 +8,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -33,8 +32,7 @@ public class Loader {
     private final RestTemplate restTemplate;
     private final MongoTemplate mongoTemplate;
 
-    @Scheduled(fixedDelay = 1000 * 60 * 60)
-    private void load() {
+    public void load() {
         log.info("Loading started");
 
         Query query = new Query(
