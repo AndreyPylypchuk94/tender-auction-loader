@@ -1,23 +1,17 @@
 package com.datapath.auctionloader;
 
-import com.datapath.auctionloader.service.Loader;
-import lombok.AllArgsConstructor;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.ApplicationPidFileWriter;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
-@AllArgsConstructor
+@EnableScheduling
 @SpringBootApplication
-public class AuctionLoaderApplication implements CommandLineRunner {
+public class AuctionLoaderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AuctionLoaderApplication.class, args);
-    }
-
-    private final Loader loader;
-
-    @Override
-    public void run(String... args) {
-        loader.load();
+        SpringApplication app = new SpringApplication(AuctionLoaderApplication.class);
+        app.addListeners(new ApplicationPidFileWriter());
+        app.run(args);
     }
 }
